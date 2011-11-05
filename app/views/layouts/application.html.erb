@@ -15,12 +15,20 @@
 
 </head>
 <body>
-  <header>
-    <a href="/"></a>
-  </header>
-  <article>
-    <%= yield %>
-  </article>
-  <footer></footer>
+	<div id="wrapper">
+		<header>
+			<a href="/" class="logo"><img src="<%= asset_path('logo.gif') %>" alt="Eatpager" /></a>
+			<div id="finder">
+				<span>Showing restaurants near you</span>
+				<form>
+					<input type="text" placeholder="Enter Zip Code" maxlength="5" />
+				</form>
+			</div>
+		</header>
+		<article>
+			<%= yield %>
+		</article>
+		<footer></footer>
+	</div>
 </body>
 </html>
