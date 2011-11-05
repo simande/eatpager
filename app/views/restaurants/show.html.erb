@@ -30,10 +30,10 @@ Grade: <%= @grade %>
 <a href="?location=<%= params[:location] %>&page=<%= params[:page].to_i + 1 %>">Next</a>
 </section>
 
-<!-- <% @restaurant.all_photos[0..1].each do |p| %>
-  <img src="<%= p.url %>" />
-  <%= p.sizes %>
-<% end %> -->
+<% @restaurant.all_photos[0..1].each do |p| %>
+	<img src="<%= p.url %>" />
+	<%= p.sizes %>
+<% end %>
 
 
 
