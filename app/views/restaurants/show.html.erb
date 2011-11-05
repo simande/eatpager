@@ -3,6 +3,16 @@
 <%= @restaurant.location.cross_street %>
 <%= @restaurant.location.city %>, <%= @restaurant.location.state %> <%= @restaurant.location.postal_code %>
 
+Tips (<%= @restaurant.json["tips"]["groups"][0]["items"].length %>)
+<% @restaurant.json["tips"]["groups"][0]["items"].each do |t| %>
+
+<p>
+  <%= t["text"] %>
+  <%= t["user"]["firstName"] %>
+  <img src="<%= t["user"]["photo"] %>" />
+</p>
+
+<% end %>
 
 <% @restaurant.all_photos[0..1].each do |p| %>
 	<img src="<%= p.url %>" />
