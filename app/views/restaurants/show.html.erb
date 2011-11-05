@@ -1,3 +1,10 @@
-<% @v.all_photos.each do |p| %>
+<%= @restaurant.name %>
+<%= @restaurant.location.address %>
+<%= @restaurant.location.cross_street %>
+<%= @restaurant.location.city %>, <%= @restaurant.location.state %> <%= @restaurant.location.postal_code %>
+
+
+<% @restaurant.all_photos[0..1].each do |p| %>
 	<img src="<%= p.url %>" />
+	<%= p.sizes %>
 <% end %>
