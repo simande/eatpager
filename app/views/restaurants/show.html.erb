@@ -27,7 +27,7 @@
 	</p>
 	<ul>
 		<li>
-			<span class="statistic">A</span>
+			<span class="statistic"><%= @grade %></span>
 			<span class="category">NYC Rating</span>
 		</li>
 		<li>
@@ -51,6 +51,22 @@
 </section>
 
 <!-- <% @restaurant.all_photos[0..1].each do |p| %>
+
 	<img src="<%= p.url %>" />
 	<%= p.sizes %>
 <% end %> -->
+
+<script>
+
+function initiate_geolocation() {
+  navigator.geolocation.getCurrentPosition(handle_geolocation_query);
+}
+
+function handle_geolocation_query(position){
+  window.location = "?location=" + position.coords.latitude + "," + position.coords.longitude;
+}
+
+</script>
+
+<a href="#" onClick="initiate_geolocation();">current location</a>
+
