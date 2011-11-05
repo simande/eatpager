@@ -14,8 +14,14 @@ class RestaurantsController < ApplicationController
     
     @testleng = nearby.length
     
-    @open_data = OpenData.where('phone = ? and grade <> ?', @restaurant.contact["phone"], '').first
+    open_data = OpenData.where('phone = ? and grade <> ?', @restaurant.contact["phone"], '').first
     
+    if open_data.blank?
+      @grade, @violation = 'N/A', 'N/A'
+    else
+      @grade, @violation = open_data.grade, open_data.violation
+    end
+
     # puts latlng
     
     # puts Geokit::Geocoders::GoogleGeocoder.geocode('10013').lat
