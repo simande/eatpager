@@ -7,17 +7,56 @@
 */
 
 body, html {
+	background-position: left 45px;
 	width: 100%; height: 100%; min-width: 1024px;
 }
-body {
-}
-	header {
-		background: #272727 url('<%= asset_path("background-header.png") %>') left top repeat-x;
-		width: 100%; min-height: 45px;
+	#wrapper {
+		background: url('<%= asset_path("background-header.png") %>') left top repeat-x;
+		width: 100%;
 	}
-	article {
+		header, article, footer {
+			text-align: left;
+			width: 984px; margin: 0 auto;
+		}
 		
-	}
-	footer {
+		header {
+			height: 45px;
+			position: relative;
+		}
+			header .logo {
+				margin-top: 12px; margin-right: 15px;
+				float: left;
+			}
+			#finder {
+				float: left; position: relative;
+			}
+				#finder span {
+					color: #fff; font-size: 14px; line-height: 45px; cursor: pointer;
+					background: url('<%= asset_path("arrow-dropdown.gif") %>') right top no-repeat;
+					padding: 0 43px 0 15px;
+					display: inline-block;
+				}
+				#finder form {
+					background: #000;
+					left: 0; top: 45px; padding: 15px;
+					position: absolute; display: none;
+				}
+					#finder input {
+						background: #fff;
+						border: 0; padding: 5px; width: 220px;
+					}
+				
+			#finder:hover span {
+				background-position: right -45px; background-color: #000;
+			}
+			#finder:hover form {
+				display: block;
+			}
+			
+		article {
 		
-	}
+		}
+		
+		footer {
+		
+		}
