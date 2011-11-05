@@ -14,14 +14,16 @@
   <%= csrf_meta_tags %>
 
 </head>
-<body>
+<body<%=raw ' style="background-image: url(\'' + yield(:restaurant_photo) + '\');"' if content_for?(:restaurant_photo) %>>
 	<div id="wrapper">
 		<header>
 			<a href="/" class="logo"><img src="<%= asset_path('logo.gif') %>" alt="Eatpager" /></a>
 			<div id="finder">
-				<span>Showing restaurants near you</span>
+				<span class="showing">Showing restaurants near you</span>
 				<form>
-					<input type="text" placeholder="Enter Zip Code" maxlength="5" />
+					<a href="#" class="current_location">Use Current Location</a>
+					<span class="or">or</span>
+					<input type="text" placeholder="Zip Code" maxlength="5" />
 				</form>
 			</div>
 		</header>
