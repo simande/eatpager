@@ -1,10 +1,11 @@
-<%= @restaurant.name %>
-<%= @restaurant.location.address %>
-<%= @restaurant.location.cross_street %>
-<%= @restaurant.location.city %>, <%= @restaurant.location.state %> <%= @restaurant.location.postal_code %>
+<% content_for :restaurant_photo do %><%= @restaurant.all_photos[0].url %><% end %>
 
 
-<% @restaurant.all_photos[0..1].each do |p| %>
-	<img src="<%= p.url %>" />
-	<%= p.sizes %>
-<% end %>
+<section id="panels">
+</section>
+<section id="details">
+	<%= @restaurant.name %>
+	<%= @restaurant.location.address %>
+	<%= @restaurant.location.cross_street %>
+	<%= @restaurant.location.city %>, <%= @restaurant.location.state %> <%= @restaurant.location.postal_code %>
+</section>
