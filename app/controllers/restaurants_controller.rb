@@ -14,7 +14,7 @@ class RestaurantsController < ApplicationController
     
     @testleng = nearby.length
     
-    @grade = OpenData.where('phone = ? and grade <> ?', @restaurant.contact["phone"], '').first.inspect
+    @grade = OpenData.where('phone = ? and grade <> ?', @restaurant.contact["phone"], '').first.grade
     
     # puts latlng
     
