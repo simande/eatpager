@@ -13,8 +13,8 @@ a { color: #d55f21; text-decoration: none; }
 img, a img { border: 0; vertical-align: bottom; }
 
 /** Headers and paragraghs font styles **/
-h1 { font-size: 50px; line-height: 1.1em; color: #191919; letter-spacing: -2px; }
-h2 { font-weight: normal; font-size: 26px; line-height: 1.2em; color: #333; letter-spacing: -1px; }
+h1 { font-size: 38px; line-height: 1.1em; letter-spacing: -2px; font-weight: 600; }
+h2 { font-weight: normal; font-size: 26px; line-height: 1.2em; letter-spacing: -1px; }
 	h1 a, h2 a { color: inherit; text-decoration: none; }
 	h1 a:hover, h2 a:hover { color: #ff7e39; text-decoration: none; }
 h3 { font-size: 14px; color: #191919; line-height: 1.2em; }
@@ -43,7 +43,7 @@ article, header, nav, section, footer, aside { display: block; }
 table { width: 100%; border: 0; padding: 0; border-collapse: collapse; text-align: left; border-spacing: 0; }
 
 /** Global font styles **/
-body { font: 400 14px/1.5em 'Open Sans', Arial, Helvetica, sans-serif; color: #191919; text-align: center; }
+body { font: 400 16px/1.5em 'Open Sans', Arial, Helvetica, sans-serif; color: #191919; text-align: center; }
 
 /** List styles **/
 ul { list-style: none; }
