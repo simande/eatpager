@@ -7,12 +7,13 @@ class RestaurantsController < ApplicationController
     # latlng = params[:location] || "40.7099537,-73.9624357"
     page = params[:page].to_i || 0
     
-    nearby = foursquare.venues.nearby(:ll => latlng, :category_id => "4d4b7105d754a06374d81259", :radius => 160)
+    nearby = foursquare.venues.nearby(:ll => latlng, :category_id => "4d4b7105d754a06374d81259", :radius => 800)
     page = page % nearby.length
     
     @restaurant = nearby[page]
     
     @testleng = nearby.length
+    puts latlng
     
     # puts Geokit::Geocoders::GoogleGeocoder.geocode('10013').lat
     
