@@ -24,12 +24,30 @@ Tips (<%= @restaurant.json["tips"]["groups"][0]["items"].length %>)
 <%= @restaurant.location.address %>
 <%= @restaurant.location.cross_street %>
 <%= @restaurant.location.city %>, <%= @restaurant.location.state %> <%= @restaurant.location.postal_code %>
+Grade: <%= @grade %>
 
 <a href="?location=<%= params[:location] %>&page=<%= params[:page].to_i - 1 %>">Previous</a>
 <a href="?location=<%= params[:location] %>&page=<%= params[:page].to_i + 1 %>">Next</a>
 </section>
 
-<% @restaurant.all_photos[0..1].each do |p| %>
-	<img src="<%= p.url %>" />
-	<%= p.sizes %>
-<% end %>
+<!-- <% @restaurant.all_photos[0..1].each do |p| %>
+  <img src="<%= p.url %>" />
+  <%= p.sizes %>
+<% end %> -->
+
+
+
+
+<script>
+
+function initiate_geolocation() {
+  navigator.geolocation.getCurrentPosition(handle_geolocation_query);
+}
+
+function handle_geolocation_query(position){
+  window.location = "?location=" + position.coords.latitude + "," + position.coords.longitude;
+}
+
+</script>
+
+<a href="#" onClick="initiate_geolocation();">current location</a>

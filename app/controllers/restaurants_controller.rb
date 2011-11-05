@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
   def show
     foursquare = Foursquare::Base.new("EGX1V4A5EHISQ30EDJIDLGGQOUZI3P0YU0JNHX51HPXO4WK1", "FIFIECB500LECVJVUNOISZ0O435AWCJFPFBCA2GBPPCXFOUG")
     geo = Geokit::Geocoders::GoogleGeocoder.geocode(params[:location])
-    puts geo
+    # puts geo
     latlng = geo.lat.to_s + ", " + geo.lng.to_s
     # latlng = params[:location] || "40.7099537,-73.9624357"
     page = params[:page].to_i || 0
@@ -13,7 +13,10 @@ class RestaurantsController < ApplicationController
     @restaurant = nearby[page]
     
     @testleng = nearby.length
-    puts latlng
+    
+    @grade = OpenData.where('phone = ? and grade <> ?', @restaurant.contact["phone"], '').first.inspect
+    
+    # puts latlng
     
     # puts Geokit::Geocoders::GoogleGeocoder.geocode('10013').lat
     
