@@ -30,17 +30,17 @@ class RestaurantsController < ApplicationController
       @grade, @violations = open_data.grade, open_data.violation.split('; ')
     end
       
-    uri = URI.parse("https://maps.googleapis.com/maps/api/directions/json?origin=#{origin}&destination=#{destination}&sensor=false&mode=walking")
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-    request = Net::HTTP::Get.new(uri.request_uri)
-
-    response = http.request(request)
-    
-    seconds = ActiveSupport::JSON.decode(response.body.force_encoding('utf-8'))['routes'][0]['legs'][0]['duration']['value']
-    @maps = Time.at(seconds).strftime('%M')
+    # uri = URI.parse("https://maps.googleapis.com/maps/api/directions/json?origin=#{origin}&destination=#{destination}&sensor=false&mode=walking")
+    # http = Net::HTTP.new(uri.host, uri.port)
+    # http.use_ssl = true
+    # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    # 
+    # request = Net::HTTP::Get.new(uri.request_uri)
+    # 
+    # response = http.request(request)
+    # 
+    # seconds = ActiveSupport::JSON.decode(response.body.force_encoding('utf-8'))['routes'][0]['legs'][0]['duration']['value']
+    # @maps = Time.at(seconds).strftime('%M')
     # puts latlng
     
     # puts Geokit::Geocoders::GoogleGeocoder.geocode('10013').lat    
