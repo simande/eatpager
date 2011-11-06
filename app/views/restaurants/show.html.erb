@@ -1,19 +1,20 @@
 <% content_for :restaurant_photo do %><%= @photos[0].url if @photos.length > 0 %><% end %>
 
-<section id="panels">
-	<div id="tips">
+<section id="panels" style="display: none;">
+	<div id="tips" style="display: none;">
 		<% if @restaurant.json["tips"] %>
-			<% @restaurant.json["tips"]["groups"][0]["items"].each do |t| %>
-			
-				<p>
-					<%= t["text"] %>
-					<%= t["user"]["firstName"] %>
-				</p>
-
-			<% end %>
+			<ul>
+				<% @restaurant.json["tips"]["groups"][0]["items"].each do |t| %>
+					<li>
+						<img src="<%= t["user"]["photo"] %>" />
+						<h2><%= t["user"]["firstName"] %></h2>
+						<p><%= t["text"] %></p>
+					</li>
+				<% end %>
+			</ul>
 		<% end %>
 	</div>
-	<div id="map">
+	<div id="map" style="display: none;">
 	</div>
 </section>
 
@@ -49,7 +50,7 @@
 		</li>
 	</ul>
 	<div id="more_details_tabs">
-		<span class="topic selected" data-section="tips">
+		<span class="topic" data-section="tips">
 			<a href="#">Tips (<%= @restaurant.json["tips"]["groups"][0]["items"].length if @restaurant.json["tips"] %>)</a>
 			<a href="#" class="close">Close</a>
 		</span>

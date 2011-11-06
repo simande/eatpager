@@ -44,5 +44,9 @@ class RestaurantsController < ApplicationController
     # 
     # seconds = ActiveSupport::JSON.decode(response.body.force_encoding('utf-8'))['routes'][0]['legs'][0]['duration']['value']
     # @maps = Time.at(seconds).strftime('%M')
+    # puts latlng
+    
+    # puts Geokit::Geocoders::GoogleGeocoder.geocode('10013').lat    
+    # puts latlng
   end
 end

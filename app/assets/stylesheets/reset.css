@@ -43,7 +43,7 @@ article, header, nav, section, footer, aside { display: block; }
 table { width: 100%; border: 0; padding: 0; border-collapse: collapse; text-align: left; border-spacing: 0; }
 
 /** Global font styles **/
-body { font: 400 16px/1.5em 'Open Sans', Arial, Helvetica, sans-serif; color: #191919; text-align: center; }
+body { font: 400 16px/1.4em 'Open Sans', Arial, Helvetica, sans-serif; color: #191919; text-align: center; }
 
 /** List styles **/
 ul { list-style: none; }

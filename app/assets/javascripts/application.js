@@ -11,7 +11,7 @@
 
 var eatpager = new Object();
 
-eatpager.locater = new function() {
+eatpager.restaurant = new function() {
 	
 
 function initiate_geolocation() {
@@ -29,8 +29,31 @@ function handle_geolocation_query(position){
 				e.preventDefault();
 				initiate_geolocation();
 			} );
+			
+			$( 'a:not(.close)', '.topic' ).bind( 'click', function( e ) {
+				e.preventDefault();
+				
+				$( '.topic' ).removeClass( 'selected' );
+				
+				var container = $( this ).parents( '.topic' );
+				var topic = container.data( 'section' );
+				
+				$( '#map, #tips' ).hide();
+				$( '#' + topic ).show();
+				
+				$( '#panels' ).fadeIn( 'fast' );
+				container.addClass( 'selected' );
+			} );
+			
+			$( '.close', '.topic' ).bind( 'click', function( e ) {
+				e.preventDefault();
+				
+				var topic = $( this ).parents( '.topic' ).removeClass( 'selected' ).data( 'section' );
+				$( '#' + topic ).show();
+				$( '#panels' ).fadeOut( 'fast' );
+			} );
 		}
 	}
 };
 
-$( document ).ready( eatpager.locater.party );
+$( document ).ready( eatpager.restaurant.party );
