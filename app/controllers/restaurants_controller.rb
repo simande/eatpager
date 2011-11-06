@@ -56,7 +56,7 @@ class RestaurantsController < ApplicationController
     
     #seconds = ActiveSupport::JSON.decode(response.body.force_encoding('utf-8'))['routes'][0]['legs'][0]['duration']['value']
     #@minute_walk = Time.at(seconds).strftime('%M')
-    @minute_walk = (@distance_away * 20.0).round
+    @minute_walk = (@distance_away * 20.0).ceil
     # puts latlng
     
     # puts Geokit::Geocoders::GoogleGeocoder.geocode('10013').lat
