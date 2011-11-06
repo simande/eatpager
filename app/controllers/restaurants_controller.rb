@@ -3,6 +3,10 @@ class RestaurantsController < ApplicationController
   require 'uri'
   require 'json'
   
+  def index
+    render :layout => false
+  end
+  
   def show
     foursquare = Foursquare::Base.new("EGX1V4A5EHISQ30EDJIDLGGQOUZI3P0YU0JNHX51HPXO4WK1", "FIFIECB500LECVJVUNOISZ0O435AWCJFPFBCA2GBPPCXFOUG")
     geo = Geokit::Geocoders::GoogleGeocoder.geocode(params[:location])

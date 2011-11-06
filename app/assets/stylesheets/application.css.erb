@@ -7,14 +7,14 @@
 */
 
 body, html {
-	width: 100%; min-width: 1024px;
+	width: 100%; min-width: 1024px; height: 100%;
 }
 body {
 	background-position: left 45px; background-size: cover; -moz-background-size: cover; -webkit-background-size: cover; background-repeat: no-repeat;
 }
 	#wrapper {
 		background: url('<%= asset_path("background-header.png") %>') left top repeat-x;
-		width: 100%;
+		width: 100%; min-height: 100%;
 		position: relative; z-index: 1;
 	}
 		header, article, footer {
@@ -27,7 +27,7 @@ body {
 			position: relative;
 		}
 			header .logo {
-				margin-top: 9px; margin-right: 25px;
+				margin-top: 10px; margin-right: 25px;
 				float: left;
 			}
 			#finder {
@@ -41,20 +41,20 @@ body {
 				}
 				#finder form {
 					background: #eaeaea; box-shadow: 0 1px 1px #999; -webkit-box-shadow: 0 1px 1px #999; -moz-box-shadow: 0 1px 1px #999;
-					right: 1px; top: 45px; padding: 15px; -webkit-border-radius: 6px 0 6px 6px; -moz-border-radius: 6px 0 6px 6px; border-radius: 6px 0 6px 6px;
+					right: 1px; top: 45px; width: 325px; padding: 15px; -webkit-border-radius: 6px 0 6px 6px; -moz-border-radius: 6px 0 6px 6px; border-radius: 6px 0 6px 6px;
 					position: absolute; display: none; z-index: 1;
 				}
-					.current_location {
+					.current_location, .address_submit {
 						font-size: 16px; line-height: 42px; color: #eaeaea; text-align: center;
 						background: url('<%= asset_path("button-location.png") %>') left top repeat-x;  box-shadow: inset 0 1px 0 #c2c2c2; -moz-box-shadow: inset 0 1px 0 #c2c2c2; -webkit-box-shadow: inset 0 1px 0 #c2c2c2;
 						height: 42px; border: 1px solid #393939; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px;
 						display: block;
 					}
-						.current_location:hover {
+						.current_location:hover, .address_submit:hover {
 							text-decoration: none;
 							background-position: left -44px;
 						}
-						.current_location:active {
+						.current_location:active, .address_submit:active {
 							background-position: left -88px; box-shadow: inset 0 1px 0 #1f1f1f; -moz-box-shadow: inset 0 1px 0 #1f1f1f; -webkit-box-shadow: inset 0 1px 0 #1f1f1f; 
 							border-color: #282828;
 						}
@@ -64,10 +64,16 @@ body {
 						padding: 10px 0;
 						display: block;
 					}
-					#finder input {
-						font-size: 20px;
+					.address_input {
+						font-size: 20px; vertical-align: middle;
 						background: #fff;
-						border: 5px solid #b2b2b2; padding: 5px 10px; width: 200px;
+						border: 5px solid #b2b2b2; padding: 5px 10px; width: 225px; margin-right: 3px;
+						display: inline-block;
+					}
+					.address_submit {
+						cursor: pointer; vertical-align: middle;
+						padding: 0 15px;
+						display: inline-block;
 					}
 				
 			#finder:hover .showing {
@@ -241,3 +247,44 @@ body {
 					.dislike:hover {
 						background-position: right -22px;
 					}
+					
+					
+.homepager {
+	background: #303131 url('<%= asset_path("background.png") %>') left top repeat-x; background-size: auto; -moz-background-size: auto; -webkit-background-size: auto;
+	overflow: hidden;
+}
+	.homepager header {
+		text-align: center; color: #fff;
+		padding-top: 50px; height: auto;
+	}
+		.homepager header img {
+			margin-left: -40px;
+		}
+		.homepager h1 {
+			font-weight: 400; font-size: 30px;
+			padding-top: 15px;
+		}
+		
+	.homepager article {
+		text-align: center;
+		width: 100%;
+	}
+		.homepager form {
+			margin-bottom: 50px;
+		}
+		.homepager .current_location {
+			 padding: 0 20px;
+			display: inline-block;
+		}
+		.homepager .address_input {
+			display: inline-block;
+		}
+		.homepager form span {
+			color: #999; vertical-align: middle; font-size: 24px; font-style: italic;
+			margin: 0 25px;
+			display: inline-block;
+		}
+	
+	.homepager footer {
+		text-align: center; color: #999; font-size: 12px;
+	}

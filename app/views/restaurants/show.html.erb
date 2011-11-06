@@ -67,11 +67,13 @@
 	</div>
 </section>
 
-<section id="rating" data-position="0">
-	<span>How’s this photo?</span>
-	<a href="?location=<%= params[:location] %>" class="like">Like</a>
-	<a href="?location=<%= params[:location] %>" class="dislike">Dislike</a>
-</section>
+<% if @photos.length > 0 %>
+	<section id="rating" data-position="0">
+		<span>How’s this photo?</span>
+		<a href="?location=<%= params[:location] %>" class="like">Like</a>
+		<a href="?location=<%= params[:location] %>" class="dislike">Dislike</a>
+	</section>
+<% end %>
 
 <script>
 $( document ).ready( function() {
@@ -94,7 +96,7 @@ $( document ).ready( function() {
 				.css( {
 					'background': 'transparent url(' + current_image + ') left 45px no-repeat',
 					'width': '100%',
-					'height': $( 'body' ).outerHeight( true ) + 45,
+					'height': $( '#wrapper' ).height(),
 					'position': 'absolute',
 					'top': '0',
 					'left': '0',

@@ -8,12 +8,11 @@
   <![endif]-->
 
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
-	<script type="text/javascript"
-	    src="http://maps.googleapis.com/maps/api/js?sensor=false">
-	</script>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
+
   <%= csrf_meta_tags %>
 </head>
 <body<%=raw ' style="background-image: url(\'' + yield(:restaurant_photo) + '\');"' if content_for?(:restaurant_photo) %>>
@@ -25,7 +24,8 @@
 				<form action="/restaurants">
 					<a href="#" class="current_location">Use Current Location</a>
 					<span class="or">or</span>
-					<input type="text" name="location" placeholder="Address or Zip Code" maxlength="50" />
+					<input type="text" name="location" placeholder="Address or Zip Code" maxlength="50" class="address_input" />
+					<input type="submit" name="submit" value="Go" class="address_submit" />
 				</form>
 			</div>
 		</header>

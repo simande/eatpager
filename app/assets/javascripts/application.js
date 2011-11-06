@@ -14,13 +14,13 @@ var eatpager = new Object();
 eatpager.restaurant = new function() {
 	
 
-function initiate_geolocation() {
-  navigator.geolocation.getCurrentPosition(handle_geolocation_query);
-}
+	function initiate_geolocation() {
+		navigator.geolocation.getCurrentPosition(handle_geolocation_query);
+	}
 
-function handle_geolocation_query(position){
-  window.location = "/restaurants?location=" + position.coords.latitude + "," + position.coords.longitude;
-}
+	function handle_geolocation_query(position){
+		window.location = "/restaurants?location=" + position.coords.latitude + "," + position.coords.longitude;
+	}
 
 	
 	return {
