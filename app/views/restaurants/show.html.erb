@@ -1,4 +1,4 @@
-<% content_for :restaurant_photo do %><%= @restaurant.all_photos[0].url if @restaurant.all_photos.length > 0 %><% end %>
+<% content_for :restaurant_photo do %><%= @photos[0].url if @photos.length > 0 %><% end %>
 
 <section id="panels" style="display: none;">
 	<div id="tips" style="display: none;">
@@ -75,16 +75,42 @@
 <script>
 $( document ).ready( function() {
 	
-	var venue_photos = [ <%= @restaurant.all_photos[0..1].collect {|p| '\'' + p.url + '\'' }.join(", ") %> ];
+	var venue_photos = [ <%= @restaurant.all_photos.collect {|p| '\'' + p.url + '\'' }.join(", ") %> ];
 	
 	var like_or_dislike = function( e ) {
 		e.preventDefault();
 		
-		var url = '/';
+		var url = '/photos/<%= @restaurant.id %>';
+		var current_image = venue_photos[ parseInt( $( '#rating' ).data( 'position' ) ) ];
 		
-		$.post( url, { preference: this.className }, function() {
+		$.post( url, { preference: this.className, image: current_image,  _method: "PUT" }, function() {
 			
-			console.log( 'hi	' );
+			var next_image_pos = $( '#rating' ).data( 'position' ) < venue_photos.length - 1 ? $( '#rating' ).data( 'position' ) + 1 : 0;
+			
+			$( '#rating' ).data( 'position', next_image_pos );
+			
+			$( '<div id="temp_bg" />' )
+				.css( {
+					'background': 'transparent url(' + current_image + ') left 45px no-repeat',
+					'width': '100%',
+					'height': $( 'body' ).outerHeight( true ) + 45,
+					'position': 'absolute',
+					'top': '0',
+					'left': '0',
+					'z-index': '0',
+					'background-size': 'cover',
+					'-webkit-background-size': 'cover',
+					'-moz-background-size': 'cover'
+				} ).prependTo( 'body' );
+				
+			$( 'body' ).css( 'background-image', 'url(' + venue_photos[ parseInt( next_image_pos ) ] + ')' );
+			
+			setTimeout( function() {
+			
+				$( '#temp_bg' ).fadeOut( 250, function() {
+					$( this ).remove();
+				} );
+			}, 400 );
 			
 		}, 'script' );
 	}

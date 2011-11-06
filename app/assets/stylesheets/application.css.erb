@@ -7,12 +7,15 @@
 */
 
 body, html {
-	background-position: left 45px; background-size: cover; -moz-background-size: cover; -webkit-background-size: cover; background-repeat: no-repeat;
 	width: 100%; min-width: 1024px;
+}
+body {
+	background-position: left 45px; background-size: cover; -moz-background-size: cover; -webkit-background-size: cover; background-repeat: no-repeat;
 }
 	#wrapper {
 		background: url('<%= asset_path("background-header.png") %>') left top repeat-x;
 		width: 100%;
+		position: relative; z-index: 1;
 	}
 		header, article, footer {
 			text-align: left;
