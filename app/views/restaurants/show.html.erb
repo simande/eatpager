@@ -21,10 +21,17 @@
 
 <section id="details">
 	<h1><%= @restaurant.name %></h1>
+	<ul id="restaurant_categories">
+	<% @restaurant.categories.each_with_index do |c,i| %>
+		<% puts i %>
+		<li><%= c.name %><% if i < @restaurant.categories.count - 1 %>,<% end %></li>
+	<% end %>
+	</ul>
 	<p>
 		<%= @restaurant.location.address %><br />
 		<%= @restaurant.location.cross_street %><br />
-		<%= @restaurant.location.city %>, <%= @restaurant.location.state %> <%= @restaurant.location.postal_code %>
+		<%= @restaurant.location.city %>, <%= @restaurant.location.state %> <%= @restaurant.location.postal_code %><br />
+		<%= @restaurant.contact['formattedPhone'] %>
 	</p>
 	<ul>
 		<li>
@@ -45,10 +52,10 @@
 			<span class="statistic"><%= @distance_away.round(2) %></span>
 			<span class="category">Miles Away</span>
 		</li>
-		<li>
+		<!--<li>
 			<span class="statistic"><%= @minute_walk %></span>
 			<span class="category">Minute Walk</span>
-		</li>
+		</li> -->
 	</ul>
 	<div id="more_details_tabs">
 		<span class="topic" data-section="tips">
