@@ -1,10 +1,8 @@
 <% content_for :restaurant_photo do %><%= @restaurant.all_photos[0].url if @restaurant.all_photos.length > 0 %><% end %>
 
-
 <section id="panels">
 	<div id="tips">
 		<% if @restaurant.json["tips"] %>
-			Tips (<%= @restaurant.json["tips"]["groups"][0]["items"].length %>)
 			<% @restaurant.json["tips"]["groups"][0]["items"].each do |t| %>
 			
 				<p>
@@ -33,7 +31,13 @@
 			<span class="category">NYC Rating</span>
 		</li>
 		<li style="display:none;">
-			<span class="statistic"><%= @violation %></span>
+			<span class="statistic">
+				<ul>
+					<% @violations.each do |i| %>
+						<li><%= i %></li>
+					<% end %>
+				</ul>
+			</span>
 			<span class="category">Violation</span>
 		</li>
 		<li>
@@ -41,13 +45,13 @@
 			<span class="category">Miles Away</span>
 		</li>
 		<li>
-			<span class="statistic">12</span>
+			<span class="statistic"><%= @maps %></span>
 			<span class="category">Minute Walk</span>
 		</li>
 	</ul>
 	<div id="more_details_tabs">
 		<span class="topic selected" data-section="tips">
-			<a href="#">Tips (24)</a>
+			<a href="#">Tips (<%= @restaurant.json["tips"]["groups"][0]["items"].length if @restaurant.json["tips"] %>)</a>
 			<a href="#" class="close">Close</a>
 		</span>
 		<span class="topic" data-section="map">
