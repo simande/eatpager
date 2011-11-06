@@ -79,7 +79,7 @@
 <script>
 $( document ).ready( function() {
 	
-	var venue_photos = [ <%= @restaurant.all_photos.collect {|p| '\'' + p.url + '\'' }.join(", ") %> ];
+	var venue_photos = [ <%= @photos.collect {|p| '\'' + p.url + '\'' }.join(", ") %> ];
 	
 	var like_or_dislike = function( e ) {
 		e.preventDefault();
