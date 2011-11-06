@@ -10,14 +10,13 @@ class RestaurantsController < ApplicationController
     # latlng = "40.7257565,-73.9946459"
     page = params[:page].to_i || 0
     
-    nearby = foursquare.venues.nearby(:ll => @origin, :category_id => "4d4b7105d754a06374d81259", :radius => 160)
+    nearby = foursquare.venues.nearby(:ll => @origin, :category_id => "4d4b7105d754a06374d81259", :radius => 240)
     page = page % nearby.length
     
     @restaurant = foursquare.venues.find(nearby[page].id)
     @destination = @restaurant.location.lat.to_s + "," + @restaurant.location.lng.to_s
     @distance_away = geo.distance_from(@destination)
-    
-    if Photo.count("foursquare_venue_id = '" + @restaurant.id + "'") == 0
+    if Photo.where("foursquare_venue_id = ?", @restaurant.id).count == 0
       @restaurant.all_photos.each do |p|
         Photo.create(:foursquare_venue_id => @restaurant.id, :url => p.url)
       end
