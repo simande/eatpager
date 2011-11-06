@@ -1,4 +1,4 @@
-<% content_for :restaurant_photo do %><%= @restaurant.all_photos[0].url %><% end %>
+<% content_for :restaurant_photo do %><%= @restaurant.all_photos[0].url if @restaurant.all_photos.length > 0 %><% end %>
 
 
 <section id="panels">
@@ -30,8 +30,12 @@
 			<span class="statistic"><%= @grade %></span>
 			<span class="category">NYC Rating</span>
 		</li>
+		<li style="display:none;">
+			<span class="statistic"><%= @violation %></span>
+			<span class="category">Violation</span>
+		</li>
 		<li>
-			<span class="statistic">0.2</span>
+			<span class="statistic"><%= @distance_away.round(2) %></span>
 			<span class="category">Miles Away</span>
 		</li>
 		<li>
@@ -57,9 +61,8 @@
 </section>
 
 <!-- <% @restaurant.all_photos[0..1].each do |p| %>
-
-	<img src="<%= p.url %>" />
-	<%= p.sizes %>
+  <img src="<%= p.url %>" />
+  <%= p.sizes %>
 <% end %> -->
 
 <script>
