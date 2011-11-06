@@ -21,7 +21,6 @@ class RestaurantsController < ApplicationController
     page = page % nearby.length
     
     @restaurant = foursquare.venues.find(nearby[page].id)
-    #puts @restaurant.categories.inspect
     
     @destination = @restaurant.location.lat.to_s + "," + @restaurant.location.lng.to_s
     @distance_away = geo.distance_from(@destination)
