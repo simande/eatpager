@@ -15,6 +15,7 @@
 		<% end %>
 	</div>
 	<div id="map" style="display: none;">
+		<a href="http://maps.google.com/maps?saddr=<%= @origin %>&daddr=<%= @destination %>&dirflg=w"><img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @origin %>&zoom=16&size=537x500&maptype=roadmap&markers=color:green%7Clabel:A%7C<%= @origin %>&markers=color:blue%7Clabel:B%7C<%= @destination %>&sensor=false" /></a>
 	</div>
 </section>
 
@@ -45,7 +46,7 @@
 			<span class="category">Miles Away</span>
 		</li>
 		<li>
-			<span class="statistic"><%= @maps %></span>
+			<span class="statistic"><%= @minute_walk %></span>
 			<span class="category">Minute Walk</span>
 		</li>
 	</ul>
@@ -106,7 +107,6 @@ $( document ).ready( function() {
 			$( 'body' ).css( 'background-image', 'url(' + venue_photos[ parseInt( next_image_pos ) ] + ')' );
 			
 			setTimeout( function() {
-			
 				$( '#temp_bg' ).fadeOut( 250, function() {
 					$( this ).remove();
 				} );
