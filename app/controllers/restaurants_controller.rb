@@ -21,6 +21,8 @@ class RestaurantsController < ApplicationController
     page = page % nearby.length
     
     @restaurant = foursquare.venues.find(nearby[page].id)
+    puts @restaurant.categories.inspect
+    
     @destination = @restaurant.location.lat.to_s + "," + @restaurant.location.lng.to_s
     @distance_away = geo.distance_from(@destination)
     if Photo.where("foursquare_venue_id = ?", @restaurant.id).count == 0
@@ -46,7 +48,11 @@ class RestaurantsController < ApplicationController
     # 
     # request = Net::HTTP::Get.new(uri.request_uri)
     # 
-    # #response = http.request(request)
+    # response = http.request(request).body.force_encoding('utf-8')
+    # json = ActiveSupport::JSON.decode(response)
+    # puts json
+    # seconds = json['routes'][0]['legs'][0]['duration']['value']
+    # @minute_walk = Time.at(seconds).strftime('%M')
     
     #seconds = ActiveSupport::JSON.decode(response.body.force_encoding('utf-8'))['routes'][0]['legs'][0]['duration']['value']
     #@minute_walk = Time.at(seconds).strftime('%M')

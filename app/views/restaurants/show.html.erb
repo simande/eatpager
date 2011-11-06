@@ -21,34 +21,35 @@
 
 <section id="details">
 	<h1><%= @restaurant.name %></h1>
+	<h3><%= @restaurant.categories.collect { |c| c.name }.join(', ') %></h3>
 	<p>
 		<%= @restaurant.location.address %><br />
 		<%= @restaurant.location.cross_street %><br />
-		<%= @restaurant.location.city %>, <%= @restaurant.location.state %> <%= @restaurant.location.postal_code %>
+		<%= @restaurant.location.city %>, <%= @restaurant.location.state %> <%= @restaurant.location.postal_code %><br />
+		<%= @restaurant.contact['formattedPhone'] %>
 	</p>
 	<ul>
 		<li>
 			<span class="statistic"><%= @grade %></span>
 			<span class="category">NYC Rating</span>
-		</li>
-		<li style="display:none;">
-			<span class="statistic">
-				<ul>
+			<div class="tooltip">
+				<img src="<%= asset_path('arrow-tooltip.png') %>" />
+				<div class="violations">
+					<h4>Violations</h4>
 					<% @violations.each do |i| %>
-						<li><%= i %></li>
+						<p><%= i %></p>
 					<% end %>
-				</ul>
-			</span>
-			<span class="category">Violation</span>
+				</div>
+			</div>
 		</li>
 		<li>
 			<span class="statistic"><%= @distance_away.round(2) %></span>
 			<span class="category">Miles Away</span>
 		</li>
-		<li>
+		<!--<li>
 			<span class="statistic"><%= @minute_walk %></span>
 			<span class="category">Minute Walk</span>
-		</li>
+		</li> -->
 	</ul>
 	<div id="more_details_tabs">
 		<span class="topic" data-section="tips">
