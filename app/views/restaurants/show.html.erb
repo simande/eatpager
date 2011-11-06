@@ -37,7 +37,13 @@
 				<div class="violations">
 					<h4>Violations</h4>
 					<% @violations.each do |i| %>
-						<p><%= i %></p>
+						<p>
+							<% if i != 'N/A' %>
+								<%= i.gsub('.', '').capitalize + '.' %>
+							<% else %>
+								<%= i %>
+							<% end %>
+						</p>
 					<% end %>
 				</div>
 			</div>
