@@ -10,7 +10,6 @@ gem "json"
 gem "typhoeus"
 gem 'geokit'
 gem "quimby"
-gem "ordrin"
 
 # Gems used only for assets and not required
 # in production environments by default.

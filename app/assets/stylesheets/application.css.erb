@@ -75,7 +75,7 @@ body, html {
 			}
 			
 		article {
-			padding-top: 65px;
+			padding: 65px 0;
 			overflow: hidden;
 		}
 			#panels {
@@ -84,12 +84,47 @@ body, html {
 				float: left; overflow: auto;
 			}
 			#details {
-				color: #fff;
+				color: #ccc;
 				background-color: rgba(0, 0, 0, 0.8);
 				width: 328px; height: 455px; padding: 20px 25px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;
-				float: right;
+				float: right; position: relative;
 			}
-			
-		footer {
-		
-		}
+				#details h1 {
+					color: #fff;
+					margin-bottom: 20px;
+				}
+				#details p {
+					padding-bottom: 20px;
+				}
+				#details ul {
+					margin-bottom: 17px;
+					overflow: hidden;
+				}
+					#details li {
+						vertical-align: middle; text-align: center;
+						width: 90px; margin-right: 10px;
+						float: left;
+					}
+						.statistic {
+							font-size: 34px; line-height: 58px; color: #fff;
+							background: url('<%= asset_path("background-statistic.png") %>') left top repeat-x;
+							height: 58px;
+							display: block;
+						}
+						.category {
+							font-size: 12px;
+							background: #000;
+							display: block;
+						}
+						
+				#more_details_tabs {
+					font-size: 21px;
+					left: -45px; width: 385px;
+					position: relative;
+				}
+					#more_details_tabs a {
+						color: #e7e56b;
+						background: #eaeaea;
+						padding: 25px 15px 25px 40px;
+						display: block;
+					}

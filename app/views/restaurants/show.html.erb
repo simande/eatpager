@@ -1,42 +1,63 @@
-<% content_for :restaurant_photo do %><%= @restaurant.all_photos[0].url %><% end %>
+<% content_for :restaurant_photo do %><%= @restaurant.all_photos[0].url if @restaurant.all_photos.length > 0 %><% end %>
 
 
 <section id="panels">
+	<div id="tips">
+		<% if @restaurant.json["tips"] %>
+			Tips (<%= @restaurant.json["tips"]["groups"][0]["items"].length %>)
+			<% @restaurant.json["tips"]["groups"][0]["items"].each do |t| %>
+			
+				<p>
+					<%= t["text"] %>
+					<%= t["user"]["firstName"] %>
+					<img src="<%= t["user"]["photo"] %>" />
+				</p>
 
-<% if @restaurant.json["tips"] %>
-Tips (<%= @restaurant.json["tips"]["groups"][0]["items"].length %>)
-<% @restaurant.json["tips"]["groups"][0]["items"].each do |t| %>
-
-<p>
-  <%= t["text"] %>
-  <%= t["user"]["firstName"] %>
-  <img src="<%= t["user"]["photo"] %>" />
-</p>
-
-<% end %>
-
-<% end %>
-
+			<% end %>
+		<% end %>
+	</div>
 </section>
+
 <section id="details">
-<%= @testleng %>
-<%= @restaurant.name %>
-<%= @restaurant.location.address %>
-<%= @restaurant.location.cross_street %>
-<%= @restaurant.location.city %>, <%= @restaurant.location.state %> <%= @restaurant.location.postal_code %>
-Grade: <%= @grade %>
-
-<a href="?location=<%= params[:location] %>&page=<%= params[:page].to_i - 1 %>">Previous</a>
-<a href="?location=<%= params[:location] %>&page=<%= params[:page].to_i + 1 %>">Next</a>
+	<h1><%= @restaurant.name %></h1>
+	<p>
+		<%= @restaurant.location.address %><br />
+		<%= @restaurant.location.cross_street %><br />
+		<%= @restaurant.location.city %>, <%= @restaurant.location.state %> <%= @restaurant.location.postal_code %>
+	</p>
+	<ul>
+		<li>
+			<span class="statistic"><%= @grade %></span>
+			<span class="category">NYC Rating</span>
+		</li>
+		<li style="display:none;">
+			<span class="statistic"><%= @violation %></span>
+			<span class="category">Violation</span>
+		</li>
+		<li>
+			<span class="statistic"><%= @distance_away.round(2) %></span>
+			<span class="category">Miles Away</span>
+		</li>
+		<li>
+			<span class="statistic">12</span>
+			<span class="category">Minute Walk</span>
+		</li>
+	</ul>
+	<div id="more_details_tabs">
+		<a href="#tips">Tips (24)</a>
+		<a href="#map">Map</a>
+	</div>
+	<div id="user_actions">
+		<a href="?location=<%= params[:location] %>&favorite=1" class="favorite">Fav</a>
+		<a href="?location=<%= params[:location] %>&page=<%= params[:page].to_i - 1 %>">Previous</a>
+		<a href="?location=<%= params[:location] %>&page=<%= params[:page].to_i + 1 %>">Next</a>
+	</div>
 </section>
 
-<% @restaurant.all_photos[0..1].each do |p| %>
-	<img src="<%= p.url %>" />
-	<%= p.sizes %>
-<% end %>
-
-
-
+<!-- <% @restaurant.all_photos[0..1].each do |p| %>
+  <img src="<%= p.url %>" />
+  <%= p.sizes %>
+<% end %> -->
 
 <script>
 
@@ -51,3 +72,4 @@ function handle_geolocation_query(position){
 </script>
 
 <a href="#" onClick="initiate_geolocation();">current location</a>
+
