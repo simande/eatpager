@@ -14,7 +14,7 @@ class RestaurantsController < ApplicationController
     # latlng = "40.7257565,-73.9946459"
     page = params[:page].to_i || 0
     
-    nearby = foursquare.venues.nearby(:ll => @origin, :category_id => "4d4b7105d754a06374d81259", :radius => 350)
+    nearby = foursquare.venues.nearby(:ll => @origin, :category_id => "4d4b7105d754a06374d81259", :radius => 600)
     
     nearby.sort! {|x, y| geo.distance_from(x.location.lat.to_s + "," + x.location.lng.to_s) <=> geo.distance_from(y.location.lat.to_s + "," + y.location.lng.to_s)}
     
