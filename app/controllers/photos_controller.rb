@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   def update
-    p = Photo.where("foursquare_venue_id = ?", params[:foursquare_venue_id]).first
+    p = Photo.where("url = ?", params[:image]).first
     if params[:preference] == "like"
       p.likes = p.likes + 1
     elsif params[:preference] == "dislike"
