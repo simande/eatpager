@@ -21,12 +21,7 @@
 
 <section id="details">
 	<h1><%= @restaurant.name %></h1>
-	<ul id="restaurant_categories">
-	<% @restaurant.categories.each_with_index do |c,i| %>
-		<% puts i %>
-		<li><%= c.name %><% if i < @restaurant.categories.count - 1 %>,<% end %></li>
-	<% end %>
-	</ul>
+	<h3><%= @restaurant.categories.collect { |c| c.name }.join(', ') %></h3>
 	<p>
 		<%= @restaurant.location.address %><br />
 		<%= @restaurant.location.cross_street %><br />
