@@ -30,16 +30,15 @@
 		<li>
 			<span class="statistic"><%= @grade %></span>
 			<span class="category">NYC Rating</span>
-		</li>
-		<li style="display:none;">
-			<span class="statistic">
-				<ul>
+			<div class="tooltip">
+				<img src="<%= asset_path('arrow-tooltip.png') %>" />
+				<div class="violations">
+					<h4>Violations</h4>
 					<% @violations.each do |i| %>
-						<li><%= i %></li>
+						<p><%= i %></p>
 					<% end %>
-				</ul>
-			</span>
-			<span class="category">Violation</span>
+				</div>
+			</div>
 		</li>
 		<li>
 			<span class="statistic"><%= @distance_away.round(2) %></span>

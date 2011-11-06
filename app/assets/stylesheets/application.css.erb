@@ -127,13 +127,13 @@ body {
 					padding-bottom: 25px;
 				}
 				#details ul {
-					margin-bottom: 17px;
-					overflow: hidden;
+					margin-bottom: 17px; width: 100%;
+					float: left; clear: both;
 				}
 					#details li {
 						vertical-align: middle; text-align: center;
 						width: 90px; margin-right: 10px;
-						float: left;
+						float: left; position: relative;
 					}
 						.statistic {
 							font-size: 34px; line-height: 58px; color: #fff;
@@ -147,9 +147,29 @@ body {
 							display: block;
 						}
 						
+						.tooltip {
+							text-align: left; color: #666;
+							top: 0; right: 95px; width: 328px; padding-right: 21px;
+							position: absolute; z-index: 2; display: none;
+						}
+							.tooltip img {
+								right: 0; top: 25px;
+								position: absolute;
+							}
+							.violations {
+								background: #fff;
+								padding: 15px 15px 0; min-height: 30px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;
+							}
+							.tooltip h4 {
+								margin-bottom: 10px;
+							}
+					#details li:first-child:hover .tooltip {
+						display: block;
+					}
+						
 				#more_details_tabs {
 					left: -45px; width: 385px;
-					position: relative;
+					position: relative; clear: both;
 				}
 					.topic {
 						padding: 20px 15px 20px 45px;
