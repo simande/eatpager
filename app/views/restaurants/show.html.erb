@@ -49,13 +49,19 @@
 		</li>
 	</ul>
 	<div id="more_details_tabs">
-		<a href="#tips">Tips (24)</a>
-		<a href="#map">Map</a>
+		<span class="topic selected" data-section="tips">
+			<a href="#">Tips (24)</a>
+			<a href="#" class="close">Close</a>
+		</span>
+		<span class="topic" data-section="map">
+			<a href="#">Map</a>
+			<a href="#" class="close">Close</a>
+		</span>
 	</div>
 	<div id="user_actions">
-		<a href="?location=<%= params[:location] %>&favorite=1" class="favorite">Fav</a>
-		<a href="?location=<%= params[:location] %>&page=<%= params[:page].to_i - 1 %>">Previous</a>
-		<a href="?location=<%= params[:location] %>&page=<%= params[:page].to_i + 1 %>">Next</a>
+		<a href="?location=<%= params[:location] %>&favorite=1" class="favorite">Fav></a> <!-- ADD 'selected' class when it's been favourited -->
+		<a href="?location=<%= params[:location] %>&page=<%= params[:page].to_i - 1 %>"><small>&#9664;</small> &nbsp; Previous</a>
+		<a href="?location=<%= params[:location] %>&page=<%= params[:page].to_i + 1 %>">Next &nbsp; <small>&#9654;</small></a>
 	</div>
 </section>
 
