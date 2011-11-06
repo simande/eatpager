@@ -37,6 +37,8 @@ class RestaurantsController < ApplicationController
     else
       @grade, @violations = open_data.grade, open_data.violation.split('; ')
     end
+    
+    @minute_walk = (@distance_away / 5) * 60
       
     # uri = URI.parse("https://maps.googleapis.com/maps/api/directions/json?origin=#{@origin}&destination=#{@destination}&sensor=false&mode=walking")
     # http = Net::HTTP.new(uri.host, uri.port)
@@ -51,7 +53,7 @@ class RestaurantsController < ApplicationController
     # seconds = json['routes'][0]['legs'][0]['duration']['value']
     # @minute_walk = Time.at(seconds).strftime('%M')
     
-    @minute_walk = ''
+    #@minute_walk = ''
     # puts latlng
     
     # puts Geokit::Geocoders::GoogleGeocoder.geocode('10013').lat    
