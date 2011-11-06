@@ -66,40 +66,30 @@
 	</div>
 </section>
 
-<section id="rating">
+<section id="rating" data-position="0">
 	<span>How’s this photo?</span>
 	<a href="?location=<%= params[:location] %>" class="like">Like</a>
 	<a href="?location=<%= params[:location] %>" class="dislike">Dislike</a>
 </section>
 
-<% @restaurant.all_photos[0..1].each do |p| %>
-	<img src="<%= p.url %>" />
-	<%= p.sizes %>
-<% end %>
-
-
-
 <script>
 $( document ).ready( function() {
 	
-	function like_or_dislike( pref ) {
-		var url = '';
-		$.post( url, { preference: pref }, function() {
+	var venue_photos = [ <%= @restaurant.all_photos[0..1].collect {|p| '\'' + p.url + '\'' }.join(", ") %> ];
+	
+	var like_or_dislike = function( e ) {
+		e.preventDefault();
+		
+		var url = '/';
+		
+		$.post( url, { preference: this.className }, function() {
 			
-			console.log( pref );
+			console.log( 'hi	' );
 			
 		}, 'script' );
 	}
 	
-	$( '.like' ).bind( 'click', function( e ) {
-		e.preventDefault();
-		like_or_dislike( 'like' );
-	} );
-	
-	$( '.dislike' ).bind( 'click', function( e ) {
-		e.preventDefault();
-		like_or_dislike( 'dislike' );
-	} );
+	$( '.like, .dislike' ).bind( 'click', like_or_dislike );
 	
 } );
 
