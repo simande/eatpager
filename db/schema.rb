@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111105191726) do
+ActiveRecord::Schema.define(:version => 20111106015548) do
 
   create_table "open_data", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(:version => 20111105191726) do
     t.string   "violation"
     t.string   "grade"
     t.datetime "grade_date"
+  end
+
+  create_table "photos", :force => true do |t|
+    t.string   "foursquare_venue_id"
+    t.string   "url"
+    t.integer  "likes",               :default => 0
+    t.integer  "dislikes",            :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "restaurants", :force => true do |t|

@@ -19,7 +19,7 @@ function initiate_geolocation() {
 }
 
 function handle_geolocation_query(position){
-  window.location = "?location=" + position.coords.latitude + "," + position.coords.longitude;
+  window.location = "/restaurants?location=" + position.coords.latitude + "," + position.coords.longitude;
 }
 
 	

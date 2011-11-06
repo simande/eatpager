@@ -2,6 +2,7 @@ Eatpager::Application.routes.draw do
   root :to => 'restaurants#index'
   get 'restaurants' => 'restaurants#show'
   resources :open_data, :only => :index
+  resources :photos, :only => :update
 
   root :to => 'restaurants#show'
   # The priority is based upon order of creation:
