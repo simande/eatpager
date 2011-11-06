@@ -20,10 +20,10 @@
 			<a href="/" class="logo"><img src="<%= asset_path('logo.gif') %>" alt="Eatpager" /></a>
 			<div id="finder">
 				<span class="showing">Showing restaurants near you</span>
-				<form>
+				<form action="/restaurants">
 					<a href="#" class="current_location">Use Current Location</a>
 					<span class="or">or</span>
-					<input type="text" placeholder="Zip Code" maxlength="5" />
+					<input type="text" name="location" placeholder="Address or Zip Code" maxlength="50" />
 				</form>
 			</div>
 		</header>
