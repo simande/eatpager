@@ -13,6 +13,17 @@
 
 ActiveRecord::Schema.define(:version => 20111106015548) do
 
+  create_table "open_data", :force => true do |t|
+    t.string   "name"
+    t.string   "street_address"
+    t.string   "zip"
+    t.string   "phone"
+    t.string   "cuisine"
+    t.string   "violation"
+    t.string   "grade"
+    t.datetime "grade_date"
+  end
+
   create_table "photos", :force => true do |t|
     t.string   "foursquare_venue_id"
     t.string   "url"
