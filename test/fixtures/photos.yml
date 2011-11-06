@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  foursquare_venue_id: MyString
+  url: MyString
+  likes: 1
+  dislikes: 1
+
+two:
+  foursquare_venue_id: MyString
+  url: MyString
+  likes: 1
+  dislikes: 1

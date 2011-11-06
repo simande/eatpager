@@ -1,22 +1,22 @@
-<% content_for :restaurant_photo do %><%= @restaurant.all_photos[0].url if @restaurant.all_photos.length > 0 %><% end %>
+<% content_for :restaurant_photo do %><%= @photos[0].url if @photos.length > 0 %><% end %>
 
-<section id="panels">
-	<div id="tips">
+<section id="panels" style="display: none;">
+	<div id="tips" style="display: none;">
 		<% if @restaurant.json["tips"] %>
-			<% @restaurant.json["tips"]["groups"][0]["items"].each do |t| %>
-			
-				<p>
-					<%= t["text"] %>
-					<%= t["user"]["firstName"] %>
-					<img src="<%= t["user"]["photo"] %>" />
-				</p>
-
-			<% end %>
+			<ul>
+				<% @restaurant.json["tips"]["groups"][0]["items"].each do |t| %>
+					<li>
+						<img src="<%= t["user"]["photo"] %>" />
+						<h2><%= t["user"]["firstName"] %></h2>
+						<p><%= t["text"] %></p>
+					</li>
+				<% end %>
+			</ul>
 		<% end %>
 	</div>
-	<div id="map">
+	<div id="map" style="display: none;">
+		<a href="http://maps.google.com/maps?saddr=<%= @origin %>&daddr=<%= @destination %>&dirflg=w"><img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @origin %>&zoom=16&size=537x500&maptype=roadmap&markers=color:green%7Clabel:A%7C<%= @origin %>&markers=color:blue%7Clabel:B%7C<%= @destination %>&sensor=false" /></a>
 	</div>
-	<a href="http://maps.google.com/maps?saddr=<%= @origin %>&daddr=<%= @destination %>&dirflg=w"><img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @origin %>&zoom=16&size=300x300&maptype=roadmap&markers=color:green%7Clabel:A%7C<%= @origin %>&markers=color:blue%7Clabel:B%7C<%= @destination %>&sensor=false" /></a>
 </section>
 
 <section id="details">
@@ -51,7 +51,7 @@
 		</li>
 	</ul>
 	<div id="more_details_tabs">
-		<span class="topic selected" data-section="tips">
+		<span class="topic" data-section="tips">
 			<a href="#">Tips (<%= @restaurant.json["tips"]["groups"][0]["items"].length if @restaurant.json["tips"] %>)</a>
 			<a href="#" class="close">Close</a>
 		</span>
@@ -75,7 +75,7 @@
 
 <% @restaurant.all_photos[0..1].each do |p| %>
 	<img src="<%= p.url %>" />
-	<%= p.sizes %>
+
 <% end %>
 
 
