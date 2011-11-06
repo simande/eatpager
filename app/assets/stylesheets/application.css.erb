@@ -76,7 +76,7 @@ body, html {
 			
 		article {
 			padding: 65px 0;
-			overflow: hidden;
+			overflow: hidden; position: relative;
 		}
 			#panels {
 				background: #eaeaea;
@@ -202,3 +202,27 @@ body, html {
 						#user_actions a.favorite.selected:active {
 							background-position: center -250px;
 						}
+			#rating {
+				font-size: 14px; color: #ccc; text-align: left;
+				background-color: rgba(0, 0, 0, 0.8);
+				left: 0; bottom: 65px; padding: 5px 10px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;
+				position: absolute;
+			}
+				.like, .dislike {
+					text-indent: -10000px;
+					background-image: url('<%= asset_path("icons-thumbs.png") %>'); background-repeat: no-repeat; background-color: transparent;
+					width: 22px; height: 22px; margin-left: 3px;
+					display: inline-block;
+				}
+				.like {
+					background-position: left top;
+				}
+					.like:hover {
+						background-position: left -22px;
+					}
+				.dislike {
+					background-position: right top;
+				}
+					.dislike:hover {
+						background-position: right -22px;
+					}

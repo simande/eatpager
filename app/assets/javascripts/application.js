@@ -7,3 +7,30 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+var eatpager = new Object();
+
+eatpager.locater = new function() {
+	
+
+function initiate_geolocation() {
+  navigator.geolocation.getCurrentPosition(handle_geolocation_query);
+}
+
+function handle_geolocation_query(position){
+  window.location = "?location=" + position.coords.latitude + "," + position.coords.longitude;
+}
+
+	
+	return {
+		party: function() {
+			$( '.current_location' ).bind( 'click', function( e ) {
+				e.preventDefault();
+				initiate_geolocation();
+			} );
+		}
+	}
+};
+
+$( document ).ready( eatpager.locater.party );

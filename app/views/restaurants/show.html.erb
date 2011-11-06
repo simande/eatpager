@@ -16,6 +16,8 @@
 			<% end %>
 		<% end %>
 	</div>
+	<div id="map">
+	</div>
 </section>
 
 <section id="details">
@@ -60,22 +62,8 @@
 	</div>
 </section>
 
-<!-- <% @restaurant.all_photos[0..1].each do |p| %>
-  <img src="<%= p.url %>" />
-  <%= p.sizes %>
-<% end %> -->
-
-<script>
-
-function initiate_geolocation() {
-  navigator.geolocation.getCurrentPosition(handle_geolocation_query);
-}
-
-function handle_geolocation_query(position){
-  window.location = "?location=" + position.coords.latitude + "," + position.coords.longitude;
-}
-
-</script>
-
-<a href="#" onClick="initiate_geolocation();">current location</a>
-
+<section id="rating">
+	<span>How’s this photo?</span>
+	<a href="?location=<%= params[:location] %>" class="like">Like</a>
+	<a href="?location=<%= params[:location] %>" class="dislike">Dislike</a>
+</section>

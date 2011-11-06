@@ -12,7 +12,6 @@
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-
 </head>
 <body<%=raw ' style="background-image: url(\'' + yield(:restaurant_photo) + '\');"' if content_for?(:restaurant_photo) %>>
 	<div id="wrapper">
@@ -30,7 +29,6 @@
 		<article>
 			<%= yield %>
 		</article>
-		<footer></footer>
 	</div>
 </body>
 </html>
