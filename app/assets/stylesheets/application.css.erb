@@ -9,9 +9,13 @@
 body, html {
 	width: 100%; min-width: 1024px; height: 100%;
 }
-body {
-	background-position: left 45px; background-size: cover; -moz-background-size: cover; -webkit-background-size: cover; background-repeat: no-repeat;
+html {
+	background: #edefef url('<%= asset_path("background-default.png") %>') left top repeat;
 }
+body {
+	background-position: left 45px; background-size: cover; -moz-background-size: cover; -webkit-background-size: cover; background-repeat: no-repeat; background-color: transparent;
+}
+
 	#wrapper {
 		background: url('<%= asset_path("background-header.png") %>') left top repeat-x;
 		width: 100%; min-height: 100%;
@@ -87,6 +91,11 @@ body {
 			padding: 65px 0;
 			overflow: hidden; position: relative;
 		}
+		
+		.no_background {
+			background: url('<%= asset_path("background-no-photos.png") %>') left 180px no-repeat;
+		}
+
 			#panels {
 				background: #eaeaea;
 				width: 537px; height: 500px; padding: 20px 25px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;

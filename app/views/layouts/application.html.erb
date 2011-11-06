@@ -29,7 +29,7 @@
 				</form>
 			</div>
 		</header>
-		<article>
+		<article<%=raw ' class="no_background"' if !content_for?(:restaurant_photo) %>>
 			<%= yield %>
 		</article>
 	</div>
